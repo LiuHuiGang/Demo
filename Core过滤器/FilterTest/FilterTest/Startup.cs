@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FilterTest.Filter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +33,15 @@ namespace FilterTest
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<ExceptionFilter>();
+                options.Filters.Add<ActionFilter>();
+                options.Filters.Add<AuthorizationFilter>();
+                options.Filters.Add<ResourceFilter>();
+                options.Filters.Add<ResultFilter>();
+              
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

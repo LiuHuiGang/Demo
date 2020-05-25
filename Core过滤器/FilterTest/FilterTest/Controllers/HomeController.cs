@@ -12,7 +12,8 @@ namespace FilterTest.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+           //throw new Exception("抛出一个异常");
+           return View();
         }
 
         public IActionResult Privacy()
